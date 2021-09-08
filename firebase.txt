@@ -1,0 +1,32 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBslYd9ClfS2l7vOwU0ex5XmReuq_KsNzc",
+  authDomain: "fb-clone-c93b4.firebaseapp.com",
+  projectId: "fb-clone-c93b4",
+  storageBucket: "fb-clone-c93b4.appspot.com",
+  messagingSenderId: "22109810277",
+  appId: "1:22109810277:web:c9e846a377e36335d4608c"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+///////////////////////////////
+
+rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if
+          request.time < timestamp.date(2021, 10, 8);
+    }
+  }
+}
+
